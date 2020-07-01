@@ -1,0 +1,2 @@
+1,/core-service/getData,GET,id=1,query=hipaa&query_id=12i-kl34&bot_id=1062,conf=5,Health Insurance Portability and Accountability Act
+2,/core-service2/getData,GET,id=2,query=hipaa&query_id=51-kl34&bot_id=9999,conf=10,Health insurance marketplace

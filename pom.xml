@@ -14,10 +14,70 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
+		<cucumberVersion>4.8.0</cucumberVersion>
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>4.8.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>cucumber-jvm-example</projectName>
+							<!-- optional, per documentation set this to "true" to bypass generation 
+								of Cucumber Reports entirely, defaults to false if not specified -->
+							<skip>false</skip>
+							<!-- output directory for the generated report -->
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<!-- optional, defaults to outputDirectory if not specified -->
+							<inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
+							<jsonFiles>
+								<!-- supports wildcard or name pattern -->
+								<param>**/*.json</param>
+							</jsonFiles>
+							<!-- optional, defaults to outputDirectory if not specified -->
+
+							<parallelTesting>false</parallelTesting>
+							<!-- optional, set true to group features by its Ids -->
+							<mergeFeaturesById>false</mergeFeaturesById>
+							<!-- optional, set true to get a final report with latest results 
+								of the same test from different test runs -->
+							<mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+							<!-- optional, set true to fail build on test failures -->
+							<checkBuildResult>false</checkBuildResult>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencies>
+
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>
@@ -73,7 +133,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
-			<version>2.9.0</version>
+			<version>2.9.9</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
@@ -107,7 +167,7 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>6.8</version>
+			<version>6.10</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -141,48 +201,47 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>5.5.0</version>
+			<version>4.8.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>5.5.0</version>
+			<version>4.8.0</version>
 			<scope>test</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>${cucumberVersion}</version>
+
+		</dependency>
+
+		<dependency>
+			<groupId>net.masterthought</groupId>
+			<artifactId>cucumber-reporting</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations 
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		-->
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>${cucumberVersion}</version>
+		</dependency>
 
 
 	</dependencies>
 
-	<build>
-		<resources>
-			<resource> <!-- Here we are defining resources telling to POM tha Log4j2 is kept there -->
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<pluginManagement><!-- lock down plugins versions to avoid using Maven 
-				defaults (may be moved to parent pom) -->
-			<plugins>
-				<!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
 
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
-				</plugin>
-				<plugin>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.22.1</version>
-					<configuration>
-						<suiteXmlFiles>
-							<suiteXmlFile>testng.xml</suiteXmlFile>
-						</suiteXmlFiles>
-					</configuration>
-				</plugin>
 
-			</plugins>
-		</pluginManagement>
-	</build>
 </project>

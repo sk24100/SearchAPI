@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="52040" started-at="2020-06-24T10:24:06Z" finished-at="2020-06-24T10:24:58Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="52040" started-at="2020-06-24T10:24:06Z" finished-at="2020-06-24T10:24:58Z">
+      <class name="shared.Dummy">
+        <test-method status="PASS" signature="getToken()[pri:0, instance:shared.Dummy@1d9b7cce]" name="getToken" is-config="true" duration-ms="2912" started-at="2020-06-24T15:54:06Z" finished-at="2020-06-24T15:54:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getToken -->
+        <test-method status="PASS" signature="requestData(shared.APIdata)[pri:0, instance:shared.Dummy@1d9b7cce]" name="requestData" duration-ms="34895" started-at="2020-06-24T15:54:14Z" data-provider="getData" finished-at="2020-06-24T15:54:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[APIdata [userId=1, url=/core-service/getData, requestType=GET, parameter=id=1, body=query=hipaa&query_id=12i-kl34&bot_id=1062, expected1=conf=5, expected2=Health Insurance Portability and Accountability Act]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- requestData -->
+        <test-method status="PASS" signature="requestData(shared.APIdata)[pri:0, instance:shared.Dummy@1d9b7cce]" name="requestData" duration-ms="9336" started-at="2020-06-24T15:54:49Z" data-provider="getData" finished-at="2020-06-24T15:54:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[APIdata [userId=2, url=/core-service2/getData, requestType=GET, parameter=id=2, body=query=hipaa&query_id=51-kl34&bot_id=9999, expected1=conf=10, expected2=Health insurance marketplace]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- requestData -->
+      </class> <!-- shared.Dummy -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
